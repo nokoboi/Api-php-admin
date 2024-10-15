@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directores</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h2>Crear Director</h2>
+    <form id="createForm">
+        <input type="text" id="createDirector" placeholder="Nombre" required>
+        <input type="text" id="createApellido" placeholder="Apellido" required>
+        <input type="date" id="createFecha" placeholder="07/11/1984">
+        <textarea rows="5" cols="40" id="createBiografia" placeholder="Biografía"></textarea>
+        <button type="submit">Crear Director</button>
+        <div id="createError" class="error">
+
+        </div>
+    </form>
+
+    <h2>Directores</h2>
+    <table id="dirTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de nacimiento</th>
+                <th>Biografía</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="../js/adminDirectores.js"></script>
+</body>
+</html>

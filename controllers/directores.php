@@ -60,8 +60,8 @@ switch($method){
     $data = json_decode(file_get_contents('php://input'), true);
     $fecha_nacimiento = null;
     $biografia = null;
-    if(isset($data['fecha_nacimiento'])){
-        $fecha_nacimiento = $data['fecha_nacimiento'];
+    if(isset($data['f_nacimiento'])){
+        $fecha_nacimiento = $data['f_nacimiento'];
     }
     if(isset($data['biografia'])){
         $biografia = $data['biografia'];
@@ -78,8 +78,8 @@ switch($method){
     $data = json_decode(file_get_contents('php://input'), true);
     $fecha_nacimiento = null;
     $biografia = null;
-    if(isset($data['fecha_nacimiento'])){
-        $fecha_nacimiento = $data['fecha_nacimiento'];
+    if(isset($data['f_nacimiento'])){
+        $fecha_nacimiento = $data['f_nacimiento'];
     }
     if(isset($data['biografia'])){
         $biografia = $data['biografia'];

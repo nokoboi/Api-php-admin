@@ -13,54 +13,52 @@ class Director{
     }
 
     public function getAll(){
-        $result = $this->db->query("SELECT id, nombre, apellido, fecha_nacimiento, biografia FROM director;");
+        $result = $this->db->query("SELECT id, nombre, apellido, f_nacimiento, biografia FROM director;");
         return $result->fetch_all(MYSQLI_ASSOC);    
     }
 
     public function getById($id){
         $idSaneado = Validator::sanear([$id]);
-        $result = $this->db->query("SELECT id, nombre, apellido, fecha_nacimiento,  biografia FROM director WHERE id = ?", [$idSaneado[0]]);
+        $result = $this->db->query("SELECT id, nombre, apellido, f_nacimiento,  biografia FROM director WHERE id = ?", [$idSaneado[0]]);
         return $result->fetch_assoc();
     }
 
     public function create($nombre, $apellido, $fecha_nacimiento = null, $biografia = null){
-        $data = ['nombre' => $nombre, 'apellido' => $apellido, 'fecha_nacimiento' => $fecha_nacimiento, 'biografia' => $biografia];
+        $data = ['nombre' => $nombre, 'apellido' => $apellido, 'f_nacimiento' => $fecha_nacimiento, 'biografia' => $biografia];
         $dataSaneados = Validator::sanear($data);
         $errors = Validator::validarDirector($dataSaneados);
 
         if(!empty($errors)){
-            $errores = new ValidatorException($errors);
-            return $errores->getErrors();
+            return $errors;
         }
 
         $nombreSaneado = $dataSaneados['nombre'];
         $apellidoSaneado = $dataSaneados['apellido'];
-        $fNacimientoSaneado = $dataSaneados['fecha_nacimiento'];
+        $fNacimientoSaneado = $dataSaneados['f_nacimiento'];
         $biografiaSaneado = $dataSaneados['biografia'];
 
         //lanzamos la consulta
-        $this->db->query("INSERT INTO director (nombre, apellido, fecha_nacimiento, biografia) VALUES(?, ?, ?, ?)", [$nombreSaneado, $apellidoSaneado, $fNacimientoSaneado, $biografiaSaneado]);
+        $this->db->query("INSERT INTO director (nombre, apellido, f_nacimiento, biografia) VALUES(?, ?, ?, ?)", [$nombreSaneado, $apellidoSaneado, $fNacimientoSaneado, $biografiaSaneado]);
 
         return $this->db->query("SELECT LAST_INSERT_ID() as id")->fetch_assoc()['id'];
     }
 
     public function update($id, $nombre, $apellido, $fecha_nacimiento = null, $biografia = null){
-        $data = ['id' => $id, 'nombre' => $nombre, 'apellido' => $apellido, 'fecha_nacimiento' => $fecha_nacimiento, 'biografia' => $biografia];
+        $data = ['id' => $id, 'nombre' => $nombre, 'apellido' => $apellido, 'f_nacimiento' => $fecha_nacimiento, 'biografia' => $biografia];
         $dataSaneados = Validator::sanear($data);
         $errors = Validator::validarDirector($dataSaneados);
 
         if(!empty($errors)){
-            $errores = new ValidatorException($errors);
-            return $errores->getErrors();
+            return $errors;
         }
         $nombreSaneado = $dataSaneados['nombre'];
         $apellidoSaneado = $dataSaneados['apellido'];
-        $fNacimientoSaneado = $dataSaneados['fecha_nacimiento'];
+        $fNacimientoSaneado = $dataSaneados['f_nacimiento'];
         $biografiaSaneado = $dataSaneados['biografia'];
         $idSaneado = $dataSaneados['id'];
 
 
-        $this->db->query("UPDATE director SET nombre = ?, apellido = ?, fecha_nacimiento = ?, biografia = ? WHERE id = ?", [$nombreSaneado, $apellidoSaneado, $fNacimientoSaneado, $biografiaSaneado, $idSaneado]);
+        $this->db->query("UPDATE director SET nombre = ?, apellido = ?, f_nacimiento = ?, biografia = ? WHERE id = ?", [$nombreSaneado, $apellidoSaneado, $fNacimientoSaneado, $biografiaSaneado, $idSaneado]);
         return $this->db->query("SELECT ROW_COUNT() as affected")->fetch_assoc()['affected'];
     }
 
