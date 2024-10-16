@@ -4,12 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peliculas</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <h2>Crear película</h2>
-    <form class="createForm">
+    <form id="createForm">
         <input type="text" id="createPelicula" placeholder="Título" required>
-        <input type="text">
+        <input type="number" id="createPrecio" placeholder="0.0" step="0.1" min="0" required>
+        <select name="directores" id="selectDirector"></select>
+        <button type="submit">Crear Película</button>
     </form>
+
+    <h2>Peliculas</h2>
+    <table id="pelTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Precio</th>
+                <th>Director</th>
+                <th>Acciones</th>
+            </tr><img src="/imagenes/bocadillo.jpg" alt="">
+        </thead>
+        <tbody></tbody>
+    </table>
 </body>
+
+<script src="../js/adminPeliculas.js"></script>
 </html>

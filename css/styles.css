@@ -38,7 +38,7 @@ textarea{
     resize: none;
 }
 
-input[type="text"], input[type="email"], input[type="date"]{
+input[type="text"], input[type="email"], input[type="date"], select, input[type="number"]{
     padding: 5px;
     width: cal(100% - 12px);
     box-sizing: border-box;
