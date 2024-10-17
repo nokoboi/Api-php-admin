@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.cinema-header {
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.cinema-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: flicker 2s infinite;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movie-poster {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 2 / 3;
+    width: 100%;
+}
+
+.movie-poster:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.movie-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.movie-poster:hover .movie-info {
+    transform: translateY(0);
+}
+
+.movie-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+}
+
+.movie-director,
+.movie-price {
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+    opacity: 0.8;
+}
+
+.now-showing {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #ff4757;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transform: rotate(5deg);
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
