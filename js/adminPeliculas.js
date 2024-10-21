@@ -1,5 +1,5 @@
-const API_URL = 'http://localhost/08-php-api-admin/controllers/peliculas.php';
-const API_DIRECTORES ='http://localhost/08-php-api-admin/controllers/directores.php';
+const API_URL = 'https://kvnsc.es/controllers/peliculas.php';
+const API_DIRECTORES ='https://kvnsc.es/controllers/directores.php';
 
 const errorElement = document.getElementById('createError');
 
@@ -41,10 +41,10 @@ async function cargarDirectores(select) {
 let directoresMap = {}; // Objeto para mapear directores por ID
 
 // Función para cargar directores y crear un mapa de directores por ID
-async function getDirectores() {
-    try {
-        const response = await fetch(API_DIRECTORES);
-        const directores = await response.json();
+    async function getDirectores() {
+        try {
+            const response = await fetch(API_DIRECTORES);
+            const directores = await response.json();
 
         // Crear un mapa de directores con id como clave y nombre como valor
         directores.forEach(director => {

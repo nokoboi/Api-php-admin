@@ -1,6 +1,6 @@
 // URL de tu API
-const API_URL = 'http://localhost/08-php-api-admin/controllers/peliculas.php';
-const API_DIRECTORES ='http://localhost/08-php-api-admin/controllers/directores.php';
+const API_URL = 'https://kvnsc.es/controllers/peliculas.php';
+const API_DIRECTORES ='https://kvnsc.es/controllers/directores.php';
 
 // Función para cargar las películas desde la API
 async function cargarPeliculas() {

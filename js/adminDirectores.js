@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost/08-php-api-admin/controllers/directores.php';
+const API_URL = 'https://kvnsc.es/controllers/directores.php';
 const errorElement = document.getElementById('createError');
 
 function limpiarHTML(str) {
