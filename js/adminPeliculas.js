@@ -151,7 +151,7 @@ function createPelicula(event){
     }
 
     // errorElement.textContent = '';
-    fetch(API_URL,{
+    fetch(`${API_URL}?metodo=nuevo`,{
         method: 'POST',
         headers: {
             'Content-Type':'application/json'
@@ -185,8 +185,8 @@ function updatePel(id){
         return;
     }
 
-    fetch(`${API_URL}?id=${id}`, {
-        method: 'PUT',
+    fetch(`${API_URL}?id=${id}&metodo=actualizar`, {
+        method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
         },
@@ -204,8 +204,8 @@ function updatePel(id){
 
 function deletePel(id){
     if(confirm('¿Estás seguro de que quieres eliminar esta película?')){
-        fetch(`${API_URL}?id=${id}`, {
-             method: 'DELETE',
+        fetch(`${API_URL}?id=${id}&metodo=eliminar`, {
+             method: 'POST',
         })
         .then(response => response.json())
         .then(result => {

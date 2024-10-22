@@ -14,6 +14,7 @@ $uri = $_SERVER['REQUEST_URI'];
 $parametros = Utilidades::parseUriParameters($uri);
 
 $id = Utilidades::getParameterValue($parametros, 'id');
+$metodo = Utilidades::getParameterValue($parametros, 'metodo');
 
 switch($method){
     case 'GET':
@@ -25,24 +26,27 @@ switch($method){
         echo json_encode($respuesta);
         break;
     case 'POST':
+      if ($metodo == 'nuevo') {
         setDirector($director);
-        break;
-    case 'PUT':
-        if($id){
+      }
+      if ($metodo == 'actualizar') {
+        if ($id) {
           updateDirector($director, $id);
-        }else{
+        } else {
           http_response_code(400);
           echo json_encode(['error' => 'ID no proporcionado']);
         }
-        break;
-    case 'DELETE':
-        if($id){
+      }
+      if ($metodo == 'eliminar') {
+        if ($id) {
           deleteDirector($director, $id);
-        }else{
+        } else {
           http_response_code(400);
           echo json_encode(['error' => 'ID no proporcionado']);
         }
-        break;
+      }
+      break;
+    
     default:
         http_response_code(405);
         echo json_encode(['error' => 'Método no permitido']);
